@@ -3,7 +3,7 @@ name: AgStack website issue
 about: Create an issue for the AgStack website
 labels: website
 ---
-<!--be sure to add label named website to the repo-->
+
 ## Create an informative issue (See each section)
 
 Using the current documentation as a model, please complete the issue template. 
