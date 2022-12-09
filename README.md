@@ -19,15 +19,15 @@ AgStack is an open source digital infrastructure for agricultural ecosystems. Us
 
 View the following diagram:
 
-<p align="center">
-<img src="assets/img/agstack-foundation-diagram-1.png" alt="Overview of stack" width=400 >
-</p>
+<div>
+  <img src="assets/img/agstack-foundation-diagram-1.png" alt="Overview of stack" width=400 >
+</div>
 
 ### Technical architecture
 
-<p align="center">
-<img src="assets/img/technical-arch-agstack.png" alt="Technical architecture diagram of stack" width=800 >
-</p>
+<div>
+  <img src="assets/img/technical-arch-agstack.png" alt="Technical architecture diagram of stack" width=800 >
+</div>
 
 
 <!--consider creating another repository or folder for the community to contribute-->
