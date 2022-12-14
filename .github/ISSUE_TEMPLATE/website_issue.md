@@ -12,7 +12,8 @@ Using the current documentation as a model, please complete the issue template.
 
 Always look at the current website to describe the change that is needed. Use the following link: 
 
-<!--Add link after repo is created-->
+**[AgStack website](https://agstack.github.io/agstack-website/)**
+
 ### Describe the changes in the doc and link to your dev story
 
 Provide info for the following steps:
