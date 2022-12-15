@@ -22,18 +22,26 @@ This documentation is for the `findAssetForField` API, which can be used to defi
 
 **BaseURL**: http://api.agstack.org/asset-registry/
 <!--are there any user requirements to use this API?-->
+<br />
+
 **Version information**
 
 Alpha version
+
+<br />
 
 #### Request
 
 Define a new polygon to register your asset.
 <!--add JSON example of requests-->
 
+<br />
+
 #### URI
 
 `POST /api/user-registry/asset-registry/{geoId}`
+
+<br />
 
 ##### Request parameters
 
@@ -42,9 +50,10 @@ We can list if the parameter is a Header, Path, or Body parameter
 
 Object, Array<String>, UUID, String, Boolean, Map<String,String>
 
-is float the appropriate data type to list?-->
+is float the appropriate data type to list?
 
-Or do we want to keep the type options that we have. now 
+Or do we want to keep the type options that we have-->
+
 |            |              |            |
 |------------|-------------|-----------|
 | Parameter | Type | Description |
@@ -82,6 +91,7 @@ Or do we want to keep the type options that we have. now
 
 <!--Add JSON snippet-->
 
+<br />
 
 #### Error codes
 
