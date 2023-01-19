@@ -4,6 +4,7 @@ title: Asset registry API
 permalink: /asset_registry_api
 horizontal: false
 nav: false
+output: swagger.html
 ---
 
 ## Overview
