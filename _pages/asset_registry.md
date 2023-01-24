@@ -30,4 +30,10 @@ You can search for specific assets by entering the geospatial information for yo
 
 <!--## Adding a new asset-->
 
+## Asset registry API
 
+You can enter values to test the Asset registry API. From the AgStack website, click the **_APIs_** drop-down menu. Select _Asset registry_ to view the documentation. 
+
+**Note:** Be sure to open the API in a new tab.
+
+To test the API, click the drop-down arrow for the function that you want to test. Click the **Try it out** button to enter queries.
