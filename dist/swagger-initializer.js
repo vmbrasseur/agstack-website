@@ -5,7 +5,7 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     url: "apis/asset_registry.json", "apis/user_registry.json",
     dom_id: '#swagger-ui',
-    deepLinking: true,
+    deepLinking: false,
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset
