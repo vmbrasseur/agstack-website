@@ -14,7 +14,7 @@ You must meet the minimum prerequisites to contribute to a project:
 
 - Fork the [agstack repository](https://github.com/agstack)
 - Create a branch locally, then create a pull request. You must receive peer review before merging your suggestions.
-
+- To request updates for the AgStack website, complete the [AgStack website issue](https://github.com/agstack/agstack-website/issues/new?assignees=&labels=website&template=website_issue.md) template.
 <!--will add more as we discuss the min. requirements-->
  
 
