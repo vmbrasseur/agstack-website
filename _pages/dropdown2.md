@@ -6,6 +6,8 @@ nav: true
 nav_order: 3
 dropdown: true
 children: 
+    - title: User registry
+      permalink: /user_registry_api
     - title: Asset registry
       permalink: /asset_registry_api
     - title: divider
