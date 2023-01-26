@@ -5,11 +5,11 @@
     "description" : "Production Server (live data)"
   } ],
   "info" : {
-    "title" : "Simple Inventory API",
+    "title" : "Asset registry API",
     "version" : "1.0.0",
-    "description" : "This is the AgStack asset registry api. It is used for registering an asset (i.e, typically a polygon but is can be any geo-spatial geometry) and getting back a 256-byte/16-Char alphanumeric unique id for it\n",
+    "description" : "This is the AgStack asset registry API. It is used for registering an asset (i.e, typically a polygon but is can be any geo-spatial geometry) and receive a 256-byte/16-Char alphanumeric unique ID for it\n.",
     "contact" : {
-      "email" : "contact@agstack.org"
+      "email" : "mhamza.141097@gmail.com"
     },
     "license" : {
       "name" : "Apache 2.0",
@@ -31,7 +31,7 @@
           "in" : "query",
           "name" : "bound",
           "required" : true,
-          "description" : "WKT for the Polygon to be identified eg, from shapely.Polygon.to_wkt()",
+          "description" : "Well-known text (WKT) for the Polygon to be identified eg, from shapely.Polygon.to_wkt()",
           "schema" : {
             "type" : "string"
           }
