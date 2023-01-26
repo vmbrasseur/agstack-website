@@ -1,5 +1,3 @@
-// need to ensure this is in Open API format
-
 {
   "openapi" : "3.0.0",
   "servers" : [ {
