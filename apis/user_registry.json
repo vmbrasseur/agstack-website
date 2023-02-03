@@ -1,25 +1,159 @@
 {
-  "openapi" : "3.0.0",
-  "servers" : [ {
-    "url" : "https://api.agstack.org/asset-registry/",
-    "description" : "Production Server (live data)"
-  } ],
-  "info" : {
-    "title" : "User registry API",
-    "version" : "1.0.0",
-    "description" : "This is the AgStack user registry API. It is to create an user account that is required to access other AgStack services.",
-    "contact" : {
-      "email" : "aanishamir@gmail.com"
+    "openapi": "3.0.3",
+    "servers": [
+        {
+            "url": "http://138.197.50.41",
+            "description": "Production Server (live data)"
+        }
+    ],
+    "info": {
+        "title": "user-registry",
+        "version": "1.0.0",
+        "contact": {}
     },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-  },
-  "tags" : [ {
-    "name" : "User registry sign up",
-    "description" : "Create an user account."
-  } ],
-  "paths" : {
+    "paths": {
+        "/signup": {
+            "post": {
+                "summary": "Signup",
+                "description": "Sign up to be a user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "confirm_pass": {
+                                        "type": "string",
+                                        "example": "Asdf1234"
+                                    },
+                                    "discoverable": {
+                                        "type": "boolean",
+                                        "example": True
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "asdf@asdf.com"
+                                    },
+                                    "newsletter": {
+                                        "type": "string",
+                                        "example": "checked"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "Asdf1234"
+                                    },
+                                    "phone_num": {
+                                        "type": "string",
+                                        "example": "03123948566"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Signed up"
+                    }
+                }
+            }
+        },
+        "/": {
+            "post": {
+                "summary": "Login",
+                "description": "Log in to the User Registry",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test@test.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "Asdf1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": The access token and refresh token
+                    }
+                }
+            }
+        },
+        "/update": {
+            "patch": {
+                "summary": "Update User",
+                "description": "Update User",
+                "operationId": "updateUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phone_num": {
+                                        "type": "string",
+                                        "example": "7997"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "phone_num": "7997"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Phone number updated"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "delete": {
+                "summary": "Logout",
+                "description": "Logout of the User Registry",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully."
+                    }
+                }
+            }
+        },
+        "/authority-token/": {
+            "get": {
+                "summary": "Get Authority Token for a Domain",
+                "description": "Get Authority Token for a Domain",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "example": "test.com"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The authority token for the Domain"
+                    },
+                    "404": {
+                        "description": "Authority token not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": []
 }
- 
