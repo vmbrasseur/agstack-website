@@ -8,6 +8,8 @@ dropdown: true
 children: 
     - title: Project table description
       permalink: /projects_overview
+    - title: User registry
+      permalink: /user_registry
     - title: Asset registry
       permalink: /asset_registry
     - title: divider
