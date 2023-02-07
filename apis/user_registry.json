@@ -28,7 +28,7 @@
                                     },
                                     "discoverable": {
                                         "type": "boolean",
-                                        "example": True
+                                        "example": "True"
                                     },
                                     "email": {
                                         "type": "string",
@@ -83,7 +83,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": The access token and refresh token
+                        "description": "The access token and refresh token"
                     }
                 }
             }
