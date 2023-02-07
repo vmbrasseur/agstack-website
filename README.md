@@ -1,12 +1,8 @@
 # AgStack 
 
-[<img src="assets/img/agstack-logo.png">](https://github.com/agstack)
+[<img src="assets/img/agstack-logo.png">](https://agstack.github.io/agstack-website/)
 
 This Linux Foundation project is an operating system for food and agriculture applications run by members and users. Access software infrastructure like tools, frameworks, and models that are needed to build, manage, and run applications through open source. 
-
-
-[![Linux Foundation Launches AgStack YouTube video](/assets/img/youtube_image.png)](https://www.youtube.com/watch?v=C_TO86dGjXg "Linux Foundation Launches AgStack")
-
 
 ## Architectural overview
 
