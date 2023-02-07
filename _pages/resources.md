@@ -29,3 +29,7 @@ View the list of open resources and documents for AgStack projects. Visit these 
 - [MessageCast and AgNet: Unleashing Collaboration, IoT and Machine Learning for Agriculture — Through Open Source](https://docs.google.com/document/d/1o-mf_VQddPSoW5H5jTTYpDdpJE1mS6RyyLYW6ASZ7bA/edit#heading=h.yv08vn4q249n)
 
 - [MessageCast and AgNet](https://medium.com/@mjackson08/messagecast-and-agnet-c662079f0410)
+
+## Videos
+
+- [![Linux Foundation Launches AgStack YouTube video](/assets/img/youtube_image.png)](https://www.youtube.com/watch?v=C_TO86dGjXg "Linux Foundation Launches AgStack")
