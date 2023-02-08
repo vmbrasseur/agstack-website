@@ -51,7 +51,7 @@
                     },
                     "responses" : {
                         "200" : {
-                            "description" : Registered field boundary data.
+                            "description" : "Registered field boundary data."
                         },
                         "401" : {
                             "description" : "Need to login."
@@ -76,10 +76,10 @@
                     ],
                     "responses" : {
                         "200" : {
-                            "description" : The JSON Geo Data for the field
+                            "description" : "The JSON Geo Data for the field."
                         },
                         "404" : {
-                            "description" : "Field not found, invalid Geo Id."
+                            "description" : "Field not found, invalid Geo ID."
                         }
                     }
                 }
@@ -90,7 +90,7 @@
                     "description" : "Received in query param a geo_id, fetch the relevant field WKT",
                     "responses" : {
                         "200" : {
-                            "description" : The field WKT
+                            "description" : "The field WKT"
                         },
                         "404" : {
                             "description" : "Field not found, invalid Geo Id."
@@ -98,7 +98,7 @@
                     }
                 }
             },
-            "/" : {
+            "/home" : {
                 "post" : {
                     "tags" : [ "authenticated" ],
                     "summary" : "Home",
