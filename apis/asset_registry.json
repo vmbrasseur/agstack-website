@@ -19,7 +19,7 @@
                 "get": {
                     "summary": "Fetch a Field (public)",
                     "description": "Received in query param a geo_id, fetch the relevant geo JSON",
-                    "parameters": [
+                    "parameters": {
                         {
                             "name": "s2_index",
                             "in": "query",
@@ -28,7 +28,7 @@
                                 "example": 12
                             }
                         }
-                    ],
+            },
                     "responses": {
                         "200": {
                             "description": "The JSON Geo Data for the field"
@@ -304,5 +304,5 @@
                 }
             }
         },
-        "tags": []
+        "tags": ""
     }
