@@ -7,7 +7,7 @@
   "info" : {
     "title" : "Asset registry API",
     "version" : "1.0.0",
-    "description" : "This is the AgStack asset registry API. It is used for registering an asset (i.e, typically a polygon but is can be any geo-spatial geometry) and receive a 256-byte/16-Char alphanumeric unique ID for it\n.",
+    "description" : "The AgStack asset registry API is used to access the asset registry service. Create, manage, and query your registered assets (i.e, typically a polygon but is can be any geo-spatial geometry). receive a 256-byte/16-Char alphanumeric unique ID for it\n.",
     "contact" : {
       "email" : "mhamza.141097@gmail.com"
     },
@@ -21,6 +21,101 @@
     "description" : "Operations available to everyone with an access key"
   } ],
   "paths" : {
+    "/register-field-boundary" : {
+       "post" : {
+       "tags" : [ "authenticated" ],
+       "summary" : "Register a field boundary"
+       "description" : "Register a field boundary of a polygon with a Geo ID and well-known text (WKT).",
+       "requestBody" : {
+           "content" : {
+               "application/json" : {
+                   "schema" : {
+                       "type" : "object",
+                       "properties" : {
+                           "s2_index" : {
+                               "type" : "string",
+                               "example" : "8, 13"
+                            },
+                            "wkt" : {
+                                "type" : "string",
+                                "example" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
+                                        }
+                                    }
+                                },
+                        "example" : {
+                            "s2_index" : "8, 13"
+                            "wkt" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
+                                }
+                            }
+                        }
+                    },
+                    "responses" : {
+                        "200" : {
+                            "description" : "Registered field boundary data."
+                        },
+                        "401" : {
+                            "description" : "Need to login."
+                        }
+                    }
+                }
+            },
+    
+    "/fetch-field/89d864f50bb864fb79fb5672f51da53991bc92e12c61f9222d5e35cd5ad52c0c" : {
+                "get" : {
+                    "summary" : "Fetch a Field (public)",
+                    "description" : "Received in query param a geo_id, fetch the relevant geo JSON",
+                    "parameters" : [
+                        {
+                            "name" : "s2_index",
+                            "in" : "query",
+                            "schema" : {
+                                "type" : "number",
+                                "example" : 12
+                            }
+                        }
+                    ],
+                    "responses" : {
+                        "200" : {
+                            "description" : "The JSON Geo Data for the field."
+                        },
+                        "404" : {
+                            "description" : "Field not found, invalid Geo ID."
+                        }
+                    }
+                }
+            },
+            "/fetch-field-wkt/752731c512e0fcb3bd7472cb2b89cdee859eefa6b0c34713e2050b109c2845ee" : {
+                "get" : {
+                    "summary" : "Fetch a Field WKT (public)",
+                    "description" : "Received in query param a geo_id, fetch the relevant field WKT",
+                    "responses" : {
+                        "200" : {
+                            "description" : "The field WKT"
+                        },
+                        "404" : {
+                            "description" : "Field not found, invalid Geo Id."
+                        }
+                    }
+                }
+            },
+            "/home" : {
+                "post" : {
+                    "tags" : [ "authenticated" ],
+                    "summary" : "Home",
+                    "description" : "Asset Registry Home",
+                    "responses" : {
+                        "200" : {
+                            "description" : "status: 200"
+                        },
+                        "400" : {
+                            "description" : "Asset Registry error"
+                        },
+                        "401" : {
+                            "description" : "Authentication Error!"
+                        }
+                    }
+                }
+            },      
     "/findAssetForField" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -111,7 +206,7 @@
                       "minimum" : 0,
                       "maximum" : 1,
                       "example" : 0.5,
-                      "description" : "The area intersection divided by the area of the union or result and query polygons"
+                      "description" : "The area intersection divided by the area of the union or result and query polygons."
                     },
                     "inclusion" : {
                       "type" : "number",
@@ -119,7 +214,7 @@
                       "minimum" : 0,
                       "maximum" : 1,
                       "example" : 0.9,
-                      "description" : "The area of the intersection divided by the area of the result polygon"
+                      "description" : "The area of the intersection divided by the area of the result polygon."
                     },
                     "overlap" : {
                       "type" : "number",
@@ -127,7 +222,7 @@
                       "minimum" : 0,
                       "maximum" : 1,
                       "example" : 0.7,
-                      "description" : "The area intersection divided by the area of query polygon"
+                      "description" : "The area intersection divided by the area of query polygon."
                     }
                   }
                 }
@@ -136,7 +231,7 @@
           }
         }
       }
-    },
+    },                     
     "/getAsset" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -195,78 +290,54 @@
         }
       }
     },
-    "/findAssetForPoint" : {
-      "get" : {
+    "/fetch-fields-for-a-point" : {
+      "post" : {
         "tags" : [ "authenticated" ],
-        "summary" : "Get a list of asset boundaries from a latitude and longitude point",
-        "operationId" : "findAssetForPoint",
-        "description" : "Get a list of asset boundaries whose boundaries contain the latitude and longitude Point\n",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "lat",
-          "required" : true,
-          "description" : "The Latitude in WGS84 projection (EPSG 4326)",
-          "schema" : {
-            "type" : "number",
-            "format" : "float",
-            "minimum" : -90,
-            "maximum" : 90
-          }
-        }, {
-          "in" : "query",
-          "name" : "lon",
-          "required" : true,
-          "description" : "The Longitude in WGS84 projection (EPSG 4326)",
-          "schema" : {
-            "type" : "number",
-            "format" : "float",
-            "minimum" : -180,
-            "maximum" : 180
-          }
-        }, {
-          "in" : "query",
-          "name" : "includeAutocreated",
-          "required" : false,
-          "description" : "Include all autocreated polygons (using machine learning)\n",
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 1
-          }
-        }, {
-          "in" : "query",
-          "name" : "includeS2Indices",
-          "required" : false,
-          "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 1
-          }
-        }, {
-          "$ref" : "#/components/parameters/accessKey"
-        }, {
-          "$ref" : "#/components/parameters/signature"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "GeoJSON payload with a list of key-value pairs",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/GeoidEntry"
-                  }
+        "summary" : "Enter a latitude and longitude point to see associated fields",
+        "description" : "Get a list of asset boundaries whose boundaries contain the latitude and longitude point\n",
+        "requestBody" : {
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "latitude" : {
+                                            "type" : "number",
+                                            "example" : 31.476859704055347
+                                        },
+                                        "longitude" : {
+                                            "type" : "number",
+                                            "example" : 74.37447591413982
+                                        },
+                                        "s2_index" : {
+                                            "type" : "string",
+                                            "example" : 815
+                                        },
+                                        "domain" : {
+                                            "type" : "string",
+                                            "example" : "test.com"
+                                        },
+                                    }
+                                },
+                                "example" : {
+                                    "latitude" : 31.476859704055347,
+                                    "longitude" : 74.37447591413982,
+                                    "s2_index" : 815,
+                                    "domain" : "test.com"
+                                }
+                            }
+                        }
+                    },
+                    "responses" : {
+                        "200" : {
+                            "description" : Fetched Fields for the point
+                        },
+                        "401" : {
+                            "description" : "Need to Login."
+                        }
+                    }
                 }
-              }
-            }
-          }
-        }
-      }
-    },
+            },        
     "/findAssetsForAOI" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -326,10 +397,167 @@
         }
       }
     },
+    "/fetch-overlapping-fields" : {
+                "get" : {
+                    "tags" : [ "authenticated" ],
+                    "summary" : "Fetch overlapping fields",
+                    "description" : "Fetch the overlapping fields for a certain threshold, returning the field geo JSON.",
+                    "requestBody" : {
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "domain" : {
+                                            "type" : "string",
+                                            "example" : "test.com"
+                                        },
+                                        "resolution_level" : {
+                                            "type" : "number",
+                                            "example" : 13
+                                        },
+                                        "threshold" : {
+                                            "type" : "number",
+                                            "example" : 40
+                                        },
+                                        "wkt" : {
+                                            "type" : "string",
+                                            "example" : "POLYGON((74.373885630991 31.47708528231105,74.37425041141702 31.476426474392063,74.37634253444864 31.47703038182828,74.37715792598917 31.477405534485314,74.3768575185795 31.478055185529357,74.373885630991 31.47708528231105))"
+                                        }
+                                    }
+                                },
+                                "example" : {
+                                    "domain" : "test.com",
+                                    "resolution_level" : 13,
+                                    "threshold" : 40,
+                                    "wkt" : "POLYGON((74.373885630991 31.47708528231105,74.37425041141702 31.476426474392063,74.37634253444864 31.47703038182828,74.37715792598917 31.477405534485314,74.3768575185795 31.478055185529357,74.373885630991 31.47708528231105))"
+                                }
+                            }
+                        }
+                    },
+                    "responses" : {
+                        "200" : {
+                            "description" : Geo IDs fulfilling the overlapping criteria
+                        },
+                        "401" : {
+                            "description" : "Need to login."
+                        }
+                    }
+                }
+            },      
+    "/get-percentage-overlap-two-fields" : {
+                "post" : {
+                    "summary" : "Get Percentage Overlap of two Geo Ids (public)",
+                    "description" : "Passed in 2 Geo Ids, determine what is the percentage overlap of the two fields",
+                    "requestBody" : {
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "geo_id_field_1" : {
+                                            "type" : "string",
+                                            "example" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b"
+                                        },
+                                        "geo_id_field_2" : {
+                                            "type" : "string",
+                                            "example" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+                                        }
+                                    }
+                                },
+                                "example" : {
+                                    "geo_id_field_1" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b",
+                                    "geo_id_field_2" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+                                }
+                            }
+                        }
+                    },
+                    "responses" : {
+                        "200" : {
+                            "description" : The overlap percentage value
+                        }
+                    }
+                }
+            },
+    
+    "/fetch-bounding-box-fields" : {
+                "post" : {
+                    "summary" : "Fetch Bounding box Fields (private)",
+                    "description" : "Fetch the fields intersecting the Bounding Box",
+                    "requestBody" : {
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "latitudes" : {
+                                            "type" : "string",
+                                            "example" : "31.477779423633137 31.478602920901388 31.474320655972566 31.47543699178076"
+                                        },
+                                        "longitudes" : {
+                                            "type" : "string",
+                                            "example" : "74.3729835582561 74.38032208212084 74.37404571302599 74.38112674482531"
+                                        },
+                                        "s2_index" : {
+                                            "type" : "string",
+                                            "example" : "8, 15"
+                                        }
+                                    }
+                                },
+                                "example" : {
+                                    "latitudes" : "31.477779423633137 31.478602920901388 31.474320655972566 31.47543699178076",
+                                    "longitudes" : "74.3729835582561 74.38032208212084 74.37404571302599 74.38112674482531",
+                                    "s2_index" : "8, 15"
+                                }
+                            }
+                        }
+                    },
+                    "responses" : {
+                        "200" : {
+                            "description" : Fetched Fields for the Bounding Box
+                        },
+                        "401" : {
+                            "description" : "Need to Login."
+                        }
+                    }
+                }
+            },
+    
+    "/logout" : {
+                "get": {
+                    "tags" : [ "authenticated" ],
+                    "summary" : "Logout",
+                    "description" : "Logs out of the Asset Registry service",
+                    "operationId" : "logoutPrivate",
+                    "responses" : {
+                        "200" : {
+                            "description" : "Logged out successfully."
+                        },
+                        "401" : {
+                            "description" : "Need to Login."
+                        }
+                    }
+                }
+            },
+    
+    "/domains" : {
+                "get" : {
+                    "summary" : "Get all Domains (public)",
+                    "description" : "Get all the registered Domains in the User Registry",
+                    "responses" : {
+                        "200" : {
+                            "description" : The fetched Domains from User Registry
+                        }
+                    }
+                }
+            }
+        },
+        "tags" : []
+    }
     "/setMetaData" : {
       "get" : {
         "tags" : [ "authenticated" ],
-        "summary" : "Add optional metadata about a registered polygon",
+        "summary" : "Add optional metadata about a registered polygon.",
         "operationId" : "setMetaData",
         "description" : "* To define and post optional metadata about a registered polygon\n* Implemented as an OrderedDict datatype so that flexible ontologies can be posted.\n* Date and public credentials will be uniform\n* Multiple users can post to a polygon, but the date and credentials will enable ease of selection by users\n",
         "parameters" : [ {

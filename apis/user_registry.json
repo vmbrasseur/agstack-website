@@ -1,15 +1,15 @@
 {
-    "openapi": "3.0.3",
-    "servers": [
+    "openapi" : "3.0.3",
+    "servers" : [
         {
-            "url": "http://138.197.50.41",
-            "description": "Production Server (live data)"
+            "url" : "http://138.197.50.41",
+            "description" : "Production Server (live data)"
         }
     ],
-    "info": {
-        "title": "user-registry",
-        "version": "1.0.0",
-        "contact": {}
+    "info" : {
+        "title" : "user-registry",
+        "version" : "1.0.0",
+        "contact" : {}
     },
     "paths": {
         "/signup": {
@@ -58,10 +58,10 @@
                 }
             }
         },
-        "/": {
+        "/login": {
             "post": {
                 "summary": "Login",
-                "description": "Log in to the User Registry",
+                "description": "Log in to the user registry.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -83,7 +83,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "The access token and refresh token"
+                        "description": "The access token and refresh token."
                     }
                 }
             }
@@ -130,10 +130,10 @@
                 }
             }
         },
-        "/authority-token/": {
+        "/authority-token": {
             "get": {
                 "summary": "Get Authority Token for a Domain",
-                "description": "Get Authority Token for a Domain",
+                "description": "Get authority token for a domain.",
                 "parameters": [
                     {
                         "name": "domain",
@@ -146,10 +146,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The authority token for the Domain"
+                        "description": "The authority token for the domain."
                     },
                     "404": {
-                        "description": "Authority token not found"
+                        "description": "Authority token not found."
                     }
                 }
             }
