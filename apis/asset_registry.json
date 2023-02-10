@@ -21,6 +21,44 @@
     "description" : "Operations available to everyone with an access key"
   } ],
   "paths" : {
+    "/register-field-boundary" : {
+      "post" : {
+        "tags" : [ "authenticated" ],
+        "summary" : "Register a field boundary.",
+        "operationId" : "register-field-boundary",
+        "description" : "Enter the Well-known text (WKT) of your geoID, then register the field boundary.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "s2_index" : {
+                    "type" : "string"
+                    "example" : "8, 13"
+                  },
+                "wkt" : {
+                  "type" : "string"
+                  "example" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
+                }
+                },
+                "example" : {
+                  "s2_index" : "8, 13",
+                  "wkt" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
+                }
+              }
+            }
+          },
+          "responses" : {
+            "200" : {
+              "description" : "Field boundary data is registered."
+            },
+            "401" : {
+              "description" : "You must log in."
+            }
+          }
+        }
+      },
     "/findAssetForField" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -54,6 +92,7 @@
             "format" : "float",
             "minimum" : 0,
             "maximum" : 1
+            "example" : 0.9
           }
         }, {
           "in" : "query",
@@ -103,7 +142,12 @@
                   "properties" : {
                     "geoid" : {
                       "type" : "string",
-                      "description" : "24 hexit string. The geo-identifier for an overlapping region"
+                      "description" : "24 hexit string. The geo-identifier for an overlapping region."
+                    },
+                    "domain" : {
+                      "type" : "string",
+                      "description" : "The domain name associated with the overlapping region."
+                      "example" : "test.com"
                     },
                     "intersection" : {
                       "type" : "number",
@@ -128,6 +172,11 @@
                       "maximum" : 1,
                       "example" : 0.7,
                       "description" : "The area intersection divided by the area of query polygon"
+                    "resolution_level" : {
+                      "type" : "number",
+                      "description" : "The level for spatial and temporal scales."
+                      "example" : 13
+                    },
                     }
                   }
                 }
@@ -137,55 +186,79 @@
         }
       }
     },
+    "/fetch-field/89d864f50bb864fb79fb5672f51da53991bc92e12c61f9222d5e35cd5ad52c0c" : {
+       "get" : {
+         "summary" : "Fetch a field.",
+         "operationId" : "fetch-field",
+         "description" : "Receive the geo JSON for the specified geoID.",
+         "parameters" : [ {
+           "in" : "query",
+           "name" : "s2_index",
+           "required" : true,
+           "description" : "The spatial index number. Enter the level number that is assigned to this field.",
+           "schema" : {
+             "type" : "number"
+             "example" : 12
+           }
+         } ],
+         "responses" : {
+           "200" : {
+             "description" : "The JSON geodata for the field.",
+           "400": {
+             "description" : "Field not found. Invalid geoID."
+           }
+         }
+     },
     "/getAsset" : {
-      "get" : {
-        "tags" : [ "authenticated" ],
-        "summary" : "Get an asset boundary with its geoid",
-        "operationId" : "getAsset",
-        "description" : "",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "geoid",
-          "required" : true,
-          "description" : "A 24 hexit string. The identifier for an overlapping region.",
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "in" : "query",
-          "name" : "includeS2Indices",
-          "required" : false,
-          "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 1
-          }
-        }, {
-          "$ref" : "#/components/parameters/accessKey"
-        }, {
-          "$ref" : "#/components/parameters/signature"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "GeoJSON payload with key-value pairs",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "geoid" : {
-                      "type" : "string",
-                      "description" : "24 hexit string. The geo-identifier for an overlapping region"
-                    },
-                    "boundary" : {
-                      "type" : "string",
-                      "description" : "WKT string of the Polygon"
-                    },
-                    "meta-data" : {
-                      "type" : "object",
-                      "description" : "Dictionary of key-value pairs that are optionally posted by the creator (if they exist)"
+        "get" : {
+          "tags" : [ "authenticated" ],
+          "summary" : "Get an asset boundary with its geoid",
+          "operationId" : "getAsset",
+          "description" : "",
+          "parameters" : [ {
+            "in" : "query",
+            "name" : "geoid",
+            "required" : true,
+            "description" : "A 24 hexit string. The identifier for an overlapping region.",
+            "schema" : {
+              "type" : "string"
+            }
+          }, {
+            "in" : "query",
+            "name" : "includeS2Indices",
+            "required" : false,
+            "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32",
+              "minimum" : 0,
+              "maximum" : 1
+            }
+          }, {
+            "$ref" : "#/components/parameters/accessKey"
+          }, {
+            "$ref" : "#/components/parameters/signature"
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "GeoJSON payload with key-value pairs",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "type" : "object",
+                    "properties" : {
+                      "geoid" : {
+                        "type" : "string",
+                        "description" : "24 hexit string. The geo-identifier for an overlapping region"
+                      },
+                      "boundary" : {
+                        "type" : "string",
+                        "description" : "WKT string of the Polygon"
+                      },
+                      "meta-data" : {
+                        "type" : "object",
+                        "description" : "Dictionary of key-value pairs that are optionally posted by the creator (if they exist)"
+                      }
                     }
                   }
                 }
@@ -193,35 +266,36 @@
             }
           }
         }
-      }
-    },
-    "/findAssetForPoint" : {
-      "get" : {
+      },
+    "/fetch-fields-for-a-point" : {
+      "post" : {
         "tags" : [ "authenticated" ],
-        "summary" : "Get a list of asset boundaries from a latitude and longitude point",
+        "summary" : "Get a list of fields that include the entered latitude and longitude point.",
         "operationId" : "findAssetForPoint",
-        "description" : "Get a list of asset boundaries whose boundaries contain the latitude and longitude Point\n",
+        "description" : "Enter a latitude point to receive a list of fields where the boundaries contain the latitude and longitude point\n.",
         "parameters" : [ {
           "in" : "query",
-          "name" : "lat",
+          "name" : "latitude",
           "required" : true,
-          "description" : "The Latitude in WGS84 projection (EPSG 4326)",
+          "description" : "The latitude in WGS84 projection (EPSG 4326)",
           "schema" : {
             "type" : "number",
             "format" : "float",
             "minimum" : -90,
             "maximum" : 90
+            "example" : 31.476859704055347
           }
         }, {
           "in" : "query",
-          "name" : "lon",
+          "name" : "longitude",
           "required" : true,
-          "description" : "The Longitude in WGS84 projection (EPSG 4326)",
+          "description" : "The longitude in WGS84 projection (EPSG 4326)",
           "schema" : {
             "type" : "number",
             "format" : "float",
             "minimum" : -180,
             "maximum" : 180
+            "example" : 74.37447591413982
           }
         }, {
           "in" : "query",
@@ -238,12 +312,21 @@
           "in" : "query",
           "name" : "includeS2Indices",
           "required" : false,
-          "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
+          "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetID.\n",
           "schema" : {
             "type" : "integer",
             "format" : "int32",
             "minimum" : 0,
             "maximum" : 1
+          }
+        }, {
+          "in" : "query",
+          "name" : "domainName",
+          "required" : false,
+          "description" : "Enter the domain name.\n",
+          "schema" : {
+            "type" : "string",
+            "example" : "test.com"
           }
         }, {
           "$ref" : "#/components/parameters/accessKey"
@@ -252,14 +335,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "GeoJSON payload with a list of key-value pairs",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/GeoidEntry"
-                  }
+            "description" : "Associated fields for the point.",
+          },
+          "401" : "You must log in."
                 }
               }
             }
@@ -286,47 +364,55 @@
           "in" : "query",
           "name" : "includeAutocreated",
           "required" : false,
-          "description" : "Include all autocreated polygons (using machine learning)\n",
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 1
-          }
-        }, {
-          "in" : "query",
-          "name" : "includeS2Indices",
-          "required" : false,
-          "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 1
-          }
-        }, {
-          "$ref" : "#/components/parameters/accessKey"
-        }, {
-          "$ref" : "#/components/parameters/signature"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "GeoJSON payload with a list of key-value pairs",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/GeoidEntry"
+            "description" : "Include all autocreated polygons (using machine learning)\n",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32",
+              "minimum" : 0,
+              "maximum" : 1
+            }
+          }, {
+            "in" : "query",
+            "name" : "includeS2Indices",
+            "required" : false,
+            "description" : "Include the S2 indices (list of Level 20, Level 19, Level 15. Level 8 and level 5) of all the indices that intersect the assetid\n",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32",
+              "minimum" : 0,
+              "maximum" : 1
+            }
+          }, {
+            "$ref" : "#/components/parameters/accessKey"
+          }, {
+            "$ref" : "#/components/parameters/signature"
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "GeoJSON payload with a list of key-value pairs",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "type" : "array",
+                    "items" : {
+                      "$ref" : "#/components/schemas/GeoidEntry"
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
-    },
-    "/setMetaData" : {
+      },
+  "/domains" : {
+    "get" : {
+      "summary" : "Get a list of registered domains."
+      "description" : "Get all of the registered domains from the user registry."
+      "responses" : {
+        "200" : "View the list of domains from the user registry."
+    }
+  }
+"/setMetaData" : {
       "get" : {
         "tags" : [ "authenticated" ],
         "summary" : "Add optional metadata about a registered polygon",
