@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.3",
   "servers" : [ {
-    "url" : "http://143.198.58.1",
+    "url" : "api-ar.agstack.org",
     "description" : "Production Server (live data)"
   } ],
   "info" : {
@@ -9,7 +9,7 @@
     "version" : "1.0.0",
     "description" : "This is the AgStack asset registry API. It is used for registering an asset (i.e, typically a polygon but is can be any geo-spatial geometry) and receive a 256-byte/16-Char alphanumeric unique ID for it\n.",
     "contact" : {
-      "email" : "mhamza.141097@gmail.com"
+      "email" : "admin@agstack.org"
     },
     "license" : {
       "name" : "Apache 2.0",
