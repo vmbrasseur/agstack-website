@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.3",
   "servers" : [ {
-    "url" : "api-ar.agstack.org",
+    "url" : "asset-registry.agstack.org",
     "description" : "Production Server (live data)"
   } ],
   "info" : {
