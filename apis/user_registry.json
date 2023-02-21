@@ -2,14 +2,15 @@
     "openapi" : "3.0.3",
     "servers" : [
         {
-            "url" : "http://138.197.50.41",
+            "url" : "api-ur.agstack.org",
             "description" : "Production Server (live data)"
         }
     ],
     "info" : {
         "title" : "user-registry",
         "version" : "1.0.0",
-        "contact" : {}
+        "contact" : {
+           "email" : "admin@agstack.org"
     },
     "paths": {
         "/signup": {
