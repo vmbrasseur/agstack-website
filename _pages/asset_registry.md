@@ -22,7 +22,7 @@ Asset registry (`asset-registry`) is a web application for AgStack users to regi
 
 When you register a new asset, you receive a unique geoID. You can register your Complete the following steps to register a field:
 
-1. Log in to AgStack, then select the **Asset registry** link.
+1. Log in to AgStack, then select the **Asset registry** link: asset-registry.agstack.org.
 2. Register your assets by completing the _Asset_ form. Enter the required information.
 
 
