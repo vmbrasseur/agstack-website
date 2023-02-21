@@ -39,7 +39,7 @@ Complete the following steps to create a user account:
 - If you enter an existing email, you a receive status code 202 with the following message: `User already exists. Please log in`
 
 5. Verify that your account is created. Log in by entering your username and password. If the user account does not exist, you receive the following message: `User does not exist`. If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
-6. 
+
 <!--updating user account-->
 <!--logout: Log out users-->
 
