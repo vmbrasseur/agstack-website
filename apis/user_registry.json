@@ -2,7 +2,7 @@
     "openapi" : "3.0.3",
     "servers" : [
         {
-            "url" : "api-ur.agstack.org",
+            "url" : "user-registry.agstack.org",
             "description" : "Production Server (live data)"
         }
     ],
