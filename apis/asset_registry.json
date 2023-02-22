@@ -58,7 +58,8 @@
             }
           }
         }
-      },
+      }
+    },
     "/findAssetForField" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -171,12 +172,12 @@
                       "minimum" : 0,
                       "maximum" : 1,
                       "example" : 0.7,
-                      "description" : "The area intersection divided by the area of query polygon.",
+                      "description" : "The area intersection divided by the area of query polygon."
+                    },
                     "resolution_level" : {
                       "type" : "number",
                       "description" : "The level for spatial and temporal scales.",
                       "example" : 13
-                    }
                     }
                   }
                 }
@@ -203,11 +204,13 @@
          } ],
          "responses" : {
            "200" : {
-             "description" : "The JSON geodata for the field.",
-           "400": {
-             "description" : "Field not found. Invalid geoID."
-           }
-         }
+             "description" : "The JSON geodata for the field."
+            },
+            "404" : {
+              "description" : "Field not found, invalid geoID."
+            }
+        }
+      }
      },
     "/getAsset" : {
         "get" : {
@@ -267,6 +270,54 @@
           }
         }
       },
+    "/fetch-overlapping-fields" : {
+      "post" : {
+        "tags" : [ "authenticated" ],
+        "summary" : "Fetch overlapping fields.",
+        "description" : "Fetch the overlapping fields for a certain threshold to receive the geo JSON.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object", 
+                "properties" : {
+                  "domain" : {
+                    "type" : "string", 
+                    "example" : "test.com"
+                  },
+                  "resoultion_level" : {
+                    "type" : "number",
+                    "example" : 13
+                  },
+                  "threshold" : {
+                    "type" : "number",
+                    "example" : 40
+                  },
+                  "wkt" : {
+                    "type" : "string",
+                    "example" : "POLYGON((74.373885630991 31.47708528231105,74.37425041141702 31.476426474392063,74.37634253444864 31.47703038182828,74.37715792598917 31.477405534485314,74.3768575185795 31.478055185529357,74.373885630991 31.47708528231105))"
+                  }
+                }
+              },
+              "example" : {
+                "domain" : "test.com",
+                "resolution_level" : 13,
+                "threshold" : 40,
+                "wkt" : "POLYGON((74.373885630991 31.47708528231105,74.37425041141702 31.476426474392063,74.37634253444864 31.47703038182828,74.37715792598917 31.477405534485314,74.3768575185795 31.478055185529357,74.373885630991 31.47708528231105))"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "GeoIDs meet the overlapping criteria"
+          },
+          "401" : {
+            "description" : "You must log in."
+        }
+      }
+    }
+    }, 
     "/fetch-fields-for-a-point" : {
       "post" : {
         "tags" : [ "authenticated" ],
@@ -337,14 +388,10 @@
           "200" : {
             "description" : "Associated fields for the point."
           },
-          "401" : "You must log in."
+          "401" : {
+            "description" : "You must log in."
                 }
-              }
-            }
-          }
-        }
-      }
-    },
+              }}},
     "/findAssetsForAOI" : {
       "get" : {
         "tags" : [ "authenticated" ],
@@ -402,87 +449,151 @@
               }
             }
           }
-        }
-      },
-  "/domains" : {
-    "get" : {
-      "summary" : "Get a list of registered domains.",
-      "description" : "Get all of the registered domains from the user registry.",
-      "responses" : {
-        "200" : "View the list of domains from the user registry."
-    }
-  },
-"/get-percentage-overlap-two-fields" : {
-  "post" : {
-    "summary" : "Get the percentage overlap of two geoIDs (public).",
-    "description" : "Enter two geoIDs to recieve the overlap percentage of the assets.",
-    "requestBody" : {
-      "content" : {
-        "application/json" : {
-          "schema" : {
-            "type" : "object",
-            "properties" : {
-              "geo_id_field_1" : {
-                "type" : "string",
-                "example" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b"
+       }
+    },
+    "/get-percentage-overlap-two-fields" : {
+      "post" : {
+        "summary" : "Get the percentage overlap of two geoIDs (public).",
+        "description" : "Enter two geoIDs to recieve the overlap percentage of the assets.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" :["geo_id_field_1", "geo_id_field_2"],
+                "type" : "object",
+                "properties" : {
+                  "geo_id_field_1" : {
+                    "type" : "string",
+                    "example" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b"
+                  },
+                  "geo-id-field_2" : {
+                    "type" : "string",
+                    "example" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+                  }
+                }
               },
-              "geo-id-field_2" : {
-                "type" : "string",
-                "example" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+              "example" : {
+                "geo_id_field_1" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b",
+                "geo_id_field_2" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
               }
             }
-          },
-          "example" : {
-            "geo_id_field_1" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b",
-            "geo_id_field_2" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The overlap percentage value."
           }
         }
       }
     },
-    "responses" : {
-      "200" : {
-        "description" : "The overlap percentage value."
-      }
-    }
-  }
-},
-
-"/setMetaData" : {
-      "get" : {
+    "/fetch-bounding-box-fields" : {
+      "post" : {
         "tags" : [ "authenticated" ],
-        "summary" : "Add optional metadata about a registered polygon",
-        "operationId" : "setMetaData",
-        "description" : "* To define and post optional metadata about a registered polygon\n* Implemented as an OrderedDict datatype so that flexible ontologies can be posted.\n* Date and public credentials will be uniform\n* Multiple users can post to a polygon, but the date and credentials will enable ease of selection by users\n",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "TBA",
-          "required" : false,
-          "description" : "TODO",
-          "schema" : {
-            "type" : "boolean",
-            "description" : "TODO"
+        "summary" : "Fetch bounding box fields.",
+        "description" : "Fetch the fields that intersect the bounding box.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "required" : ["latitudes", "longitudes"],
+                "properties" : {
+                  "latitudes" : {
+                    "type" : "string",
+                    "example" : "31.477779423633137 31.478602920901388 31.474320655972566 31.47543699178076"
+                  },
+                  "longitude" : {
+                    "type" : "string",
+                    "example" : "74.3729835582561 74.38032208212084 74.37404571302599 74.38112674482531"
+                  },
+                  "s2_index" : {
+                    "type" : "string",
+                    "example" : "8, 15"
+                  }
+
+                }
+              },
+              "example" : {
+                "latitudes" : "31.477779423633137 31.478602920901388 31.474320655972566 31.47543699178076",
+                "longitudes" : "74.3729835582561 74.38032208212084 74.37404571302599 74.38112674482531",
+                "s2_index" : "8, 15"
+              }
+            }
           }
-        }, {
-          "$ref" : "#/components/parameters/accessKey"
-        }, {
-          "$ref" : "#/components/parameters/signature"
-        } ],
+        },
         "responses" : {
           "200" : {
-            "description" : "TODO",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "boolean",
-                  "description" : "TODO"
+            "description" : "Fetched the fields for the bounding box."
+          },
+          "401" : {
+            "description" : "You must log in."
+          }
+        }
+      }
+    },
+    "/logout" : {
+      "get" : {
+        "tags" : [ "authenticated" ],
+        "summary" : "Log out",
+        "description" : "Log out of the Asset registry service.",
+        "operationId" : "logoutPrivate",
+        "responses" : {
+          "200" : {
+            "description" : "Logged out successfully."
+          },
+          "401" : {
+            "description" : "You must log in."
+          }
+        }
+      }
+    },
+    "/domains" : {
+      "get" : {
+        "summary" : "Get a list of registered domains.",
+        "description" : "Get all of the registered domains from the user registry.",
+        "responses" : {
+          "200" : {
+            "description" : "View the list of domains from the user registry."
+      }
+    }
+    }
+    },
+    "/setMetaData" : {
+          "get" : {
+            "tags" : [ "authenticated" ],
+            "summary" : "Add optional metadata about a registered polygon",
+            "operationId" : "setMetaData",
+            "description" : "* To define and post optional metadata about a registered polygon\n* Implemented as an OrderedDict datatype so that flexible ontologies can be posted.\n* Date and public credentials will be uniform\n* Multiple users can post to a polygon, but the date and credentials will enable ease of selection by users\n",
+            "parameters" : [ {
+              "in" : "query",
+              "name" : "TBA",
+              "required" : false,
+              "description" : "TODO",
+              "schema" : {
+                "type" : "boolean",
+                "description" : "TODO"
+              }
+            }, {
+              "$ref" : "#/components/parameters/accessKey"
+            }, {
+              "$ref" : "#/components/parameters/signature"
+            } ],
+            "responses" : {
+              "200" : {
+                "description" : "TODO",
+                "content" : {
+                  "application/json" : {
+                    "schema" : {
+                      "type" : "boolean",
+                      "description" : "TODO"
+                    }
+                  }
                 }
               }
             }
           }
         }
-      }
-    }
-  },
+        },
   "components" : {
     "parameters" : {
       "accessKey" : {
@@ -519,5 +630,4 @@
         }
       }
     }
-  }
-}
+  }}
