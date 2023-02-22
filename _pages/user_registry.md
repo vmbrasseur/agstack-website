@@ -28,18 +28,28 @@ A table list of user data where the following parameter values are stored:
 
 Complete the following steps to create a user account:
 
-1. Navigate to the User registry website (ur.agstack.org).
+1. Navigate to the AgStack login page: user-registry.agstack.org.
 2. If you are creating a new account, select the **Sign up** link. A form is displayed.
-3. Complete the required fields of the form, then click **Create**. After you complete the form, check the email that you entered for an activation email.
+3. Complete the required fields of the form, then click **Sign up**. After you complete the form, the login box is displayed again. 
+4. Check the email that you entered for an activation email, and click the activation link. You must verify your account by selecting the activation link.
 
 **Notes:** 
 
-- You must verify your account by selecting the activation link.
+- If you have not received an activation email, select **Resend Activation Email**. 
 - If the domain is block, you receive status code 401 with the following message: `You are not allowed to register.`
 - If you enter an existing email, you a receive status code 202 with the following message: `User already exists. Please log in`
 
-5. Verify that your account is created. Log in by entering your username and password. If the user account does not exist, you receive the following message: `User does not exist`. If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
+5. Verify that your account is created. Log in by entering the email and password that you registered. If the user account does not exist, you receive the following message: `User does not exist`. If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
 
-<!--updating user account-->
-<!--logout: Log out users-->
+## Updating an user account
+
+You can update your email, phone number, and password. Complete the following steps to update your user account:
+
+1. Log in to AgStack.
+2. From the AgStack _Homepage_, select the _Account Settings_ tab.
+3. Edit the field that you want to update, then select **Update**.
+
+## Logging out 
+
+You must be logged in. When you want to log out, select the _Logout_ tab in the header. 
 
