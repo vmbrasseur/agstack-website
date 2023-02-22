@@ -23,6 +23,14 @@
   "paths" : {
     "/register-field-boundary" : {
       "post" : {
+        "responses" : {
+          "200" : {
+            "description" : "Field boundary data is registered."
+          },
+          "401" : {
+            "description" : "You must log in."
+          }
+        },
         "tags" : [ "authenticated" ],
         "summary" : "Register a field boundary.",
         "operationId" : "register-field-boundary",
@@ -34,11 +42,11 @@
                 "type" : "object",
                 "properties" : {
                   "s2_index" : {
-                    "type" : "string"
+                    "type" : "string",
                     "example" : "8, 13"
                   },
                 "wkt" : {
-                  "type" : "string"
+                  "type" : "string",
                   "example" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
                 }
                 },
@@ -47,14 +55,6 @@
                   "wkt" : "POLYGON ((-93.69805256358295 41.9757745318825, -93.69249086165937 41.97576056598778, -93.69245431117128 41.96883250535657, -93.69804142643369 41.97220658289061, -93.69805256358295 41.9757745318825))"
                 }
               }
-            }
-          },
-          "responses" : {
-            "200" : {
-              "description" : "Field boundary data is registered."
-            },
-            "401" : {
-              "description" : "You must log in."
             }
           }
         }
@@ -91,7 +91,7 @@
             "type" : "number",
             "format" : "float",
             "minimum" : 0,
-            "maximum" : 1
+            "maximum" : 1,
             "example" : 0.9
           }
         }, {
@@ -146,7 +146,7 @@
                     },
                     "domain" : {
                       "type" : "string",
-                      "description" : "The domain name associated with the overlapping region."
+                      "description" : "The domain name associated with the overlapping region.",
                       "example" : "test.com"
                     },
                     "intersection" : {
@@ -171,12 +171,12 @@
                       "minimum" : 0,
                       "maximum" : 1,
                       "example" : 0.7,
-                      "description" : "The area intersection divided by the area of query polygon"
+                      "description" : "The area intersection divided by the area of query polygon.",
                     "resolution_level" : {
                       "type" : "number",
-                      "description" : "The level for spatial and temporal scales."
+                      "description" : "The level for spatial and temporal scales.",
                       "example" : 13
-                    },
+                    }
                     }
                   }
                 }
@@ -197,7 +197,7 @@
            "required" : true,
            "description" : "The spatial index number. Enter the level number that is assigned to this field.",
            "schema" : {
-             "type" : "number"
+             "type" : "number",
              "example" : 12
            }
          } ],
@@ -282,7 +282,7 @@
             "type" : "number",
             "format" : "float",
             "minimum" : -90,
-            "maximum" : 90
+            "maximum" : 90,
             "example" : 31.476859704055347
           }
         }, {
@@ -294,7 +294,7 @@
             "type" : "number",
             "format" : "float",
             "minimum" : -180,
-            "maximum" : 180
+            "maximum" : 180,
             "example" : 74.37447591413982
           }
         }, {
@@ -335,7 +335,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Associated fields for the point.",
+            "description" : "Associated fields for the point."
           },
           "401" : "You must log in."
                 }
@@ -406,12 +406,47 @@
       },
   "/domains" : {
     "get" : {
-      "summary" : "Get a list of registered domains."
-      "description" : "Get all of the registered domains from the user registry."
+      "summary" : "Get a list of registered domains.",
+      "description" : "Get all of the registered domains from the user registry.",
       "responses" : {
         "200" : "View the list of domains from the user registry."
     }
+  },
+"/get-percentage-overlap-two-fields" : {
+  "post" : {
+    "summary" : "Get the percentage overlap of two geoIDs (public).",
+    "description" : "Enter two geoIDs to recieve the overlap percentage of the assets.",
+    "requestBody" : {
+      "content" : {
+        "application/json" : {
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "geo_id_field_1" : {
+                "type" : "string",
+                "example" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b"
+              },
+              "geo-id-field_2" : {
+                "type" : "string",
+                "example" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+              }
+            }
+          },
+          "example" : {
+            "geo_id_field_1" : "7af4d1ddb9fb20e5cfe4544afab435c74e82a76024c1b8abaf9dd33163fc984b",
+            "geo_id_field_2" : "7b02942a48b934ed20854e9e4339be84c241c0b2770739b65c334649921a48ca"
+          }
+        }
+      }
+    },
+    "responses" : {
+      "200" : {
+        "description" : "The overlap percentage value."
+      }
+    }
   }
+},
+
 "/setMetaData" : {
       "get" : {
         "tags" : [ "authenticated" ],
