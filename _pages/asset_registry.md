@@ -20,20 +20,21 @@ Asset registry (`asset-registry`) is a web application for AgStack users to regi
 
 ## Register an asset 
 
-When you register a new asset, you receive a unique geoID. You can register your Complete the following steps to register a field:
+When you register a new asset, you receive a unique geoID. You can register an asset by using the asset registry map. Complete the following steps to register a field:
 
-1. Log in to AgStack, then select the **Asset registry** link: asset-registry.agstack.org.
-2. Register your assets by completing the _Asset_ form. Enter the required information.
-
+1. Log in to AgStack, then select the **Asset registry** button.
+2. Select the _Draw polygon_ or _Draw rectangle_ icon.
+  * When you select to draw a polygon, select specific points to create a boundary around the area. Select the initial point to close the polygon.
+  * When you select to draw a rectangle, click and drag your cursor to create the rectangular boundary.
+3. When you click the drawn polygon the _Field Actions_ box appears. The actions listed in the _Field Actions_ box are optional.
+4. To fetch an existing field, enter the the geo information that you have. Click the _Fetch Field_ button.
+5. Select the _Register Field_ button to register the polygon.
 
 ## Search for an exisiting asset
 
-You can search for specific assets by entering the geospatial information for your polygon. After you query your polygon, you receive a 256-byte/16-Char alphanumeric unique ID. You can view only the assets that are available from your user account. You can search for your asset using the following approaches:
+You can search for specific assets by entering the geospatial information for your polygon. After you query your polygon, you receive a 256-byte/16-Char alphanumeric unique ID. You can view only the assets that are available from your user account. 
    
-   - Enter the polygon name
-   - Enter the boundaries using latitude and longitude points
-   - Select specific points from the geomap view
-   - Entering an similarity overlap percentage
+To find out the percentage overlap of two Geo IDs, enter the specific Geo IDs that you want to check.
 
 ## Asset registry API
 
