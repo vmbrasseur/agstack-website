@@ -1,50 +1,58 @@
 {
-    "openapi" : "3.0.3",
-    "servers" : [
-        {
-            "url" : "http://138.197.50.41",
-            "description" : "Production Server (live data)"
-        }
-    ],
-    "info" : {
-        "title" : "user-registry",
-        "version" : "1.0.0",
-        "contact" : {}
+  "openapi" : "3.0.3",
+  "servers" : [{
+    "url" : "user-registry.agstack.org",
+    "description" : "Production Server (live data)"
+  }],
+  "info" : {
+    "title" : "user-registry",
+    "version" : "1.0.0",
+    "contact" : {
+      "email" : "admin@agstack.org"
     },
+    "license" : {
+        "name" : "Apache 2.0",
+        "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "tags" : [ {
+      "name" : "authenticated",
+      "description" : "Operations available to everyone with an access key"
+    } ],
     "paths": {
-        "/signup": {
-            "post": {
-                "summary": "Signup",
-                "description": "Sign up to be a user",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "confirm_pass": {
-                                        "type": "string",
-                                        "example": "Asdf1234"
+      "/signup": {
+        "post": {
+        "summary": "Signup",
+        "description": "Sign up to be a user",
+        "requestBody": {
+           "content": {
+             "application/json": {
+               "schema": {
+                 "type": "object",
+                 "properties": {
+                   "confirm_pass": {
+                     "type": "string",
+                     "example": "Asdf1234"
                                     },
-                                    "discoverable": {
-                                        "type": "boolean",
-                                        "example": "True"
+                    "discoverable": {
+                      "type": "boolean",
+                      "example": "True"
                                     },
-                                    "email": {
-                                        "type": "string",
-                                        "example": "asdf@asdf.com"
+                    "email": {
+                      "type": "string",
+                      "example": "asdf@asdf.com"
                                     },
-                                    "newsletter": {
-                                        "type": "string",
-                                        "example": "checked"
+                    "newsletter": {
+                      "type": "string",
+                      "example": "checked"
                                     },
-                                    "password": {
-                                        "type": "string",
-                                        "example": "Asdf1234"
+                    "password": {
+                      "type": "string",
+                      "example": "Asdf1234"
                                     },
-                                    "phone_num": {
-                                        "type": "string",
-                                        "example": "03123948566"
+                    "phone_num": {
+                      "type": "string",
+                      "example": "03123948566"
                                     }
                                 }
                             }
@@ -59,22 +67,22 @@
             }
         },
         "/login": {
-            "post": {
-                "summary": "Login",
-                "description": "Log in to the user registry.",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "email": {
-                                        "type": "string",
-                                        "example": "test@test.com"
+           "post": {
+           "summary": "Login",
+           "description": "Log in to the user registry.",
+           "requestBody": {
+             "content": {
+             "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "test@test.com"
                                     },
-                                    "password": {
-                                        "type": "string",
-                                        "example": "Asdf1234"
+                    "password": {
+                      "type": "string",
+                      "example": "Asdf1234"
                                     }
                                 }
                             }
@@ -154,6 +162,6 @@
                 }
             }
         }
-    },
-    "tags": []
 }
+}
+

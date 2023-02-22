@@ -23,33 +23,33 @@ A table list of user data where the following parameter values are stored:
 <!--from Ted how is the valid token defined?-->
   * `token_required`: Unique access token generated after a user is created
   * Discoverable fields for the user (`geoID`, `boundaries`, `polygon`, etc.)
-
-### DomainCheck
-
-A table list of allowed and blocked domains where the following parameter values are stored:
-
-  * `id`: The user ID name. Required
-  * `belongs_to`: List of domains that are allowed or blocked. When the value is set to `0`, it means that the domain is allowed. When the value is set to `1`, it means that the domain is blocked.
-  * `domains`: List of domain services. For example, `gmail.com` or `hotmail.com` are stored in this parameter.
   
-## API Endpoints
+## Signing up
 
-View the following list of user registry API Endpoints
-  
-* /signup: Verifies if the JSON data that contains the email, password, and phone number matches with the information in the `DomainChecks` database table. 
-    
-  If the domain is block, you receive status code 401 with the following message: `You are not allowed to register.`
-    
-  If you enter an existing email, you a receive status code 202 with the following message: `User already exists. Please log in`
+Complete the following steps to create a user account:
 
-* /update: Use this endpoint to update user account information. Currently, you can only update your phone number. 
+1. Navigate to the AgStack login page: user-registry.agstack.org.
+2. If you are creating a new account, select the **Sign up** link. A form is displayed.
+3. Complete the required fields of the form, then click **Sign up**. After you complete the form, the login box is displayed again. 
+4. Check the email that you entered for an activation email, and click the activation link. You must verify your account by selecting the activation link.
 
-* /login: Verifies if users exist by checking the JSON data. 
+**Notes:** 
 
-  If the user account does not exist, you receive the following message: `User does not exist`.
-  
-  If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
-  
-* /logout: Log out users.
+- If you have not received an activation email, select **Resend Activation Email**. 
+- If the domain is block, you receive status code 401 with the following message: `You are not allowed to register.`
+- If you enter an existing email, you a receive status code 202 with the following message: `User already exists. Please log in`
 
-* /authority-token: Gets the authority token for a domain. 
+5. Verify that your account is created. Log in by entering the email and password that you registered. If the user account does not exist, you receive the following message: `User does not exist`. If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
+
+## Updating an user account
+
+You can update your email, phone number, and password. Complete the following steps to update your user account:
+
+1. Log in to AgStack.
+2. From the AgStack _Homepage_, select the _Account Settings_ tab.
+3. Edit the field that you want to update, then select **Update**.
+
+## Logging out 
+
+You must be logged in. When you want to log out, select the _Logout_ tab in the header. 
+
