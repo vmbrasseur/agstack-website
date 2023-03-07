@@ -4,8 +4,8 @@ window.onload = function() {
   // the following lines will be replaced by docker/configurator, when it runs in a docker-container
   window.ui = SwaggerUIBundle({
     urls: [
-      {url: "apis/asset_registry.json", name: "Asset registry"},
       {url: "apis/user_registry.json", name: "User registry"},
+      {url: "apis/asset_registry.json", name: "Asset registry"},
     ], 
     dom_id: '#swagger-ui',
     deepLinking: true,
