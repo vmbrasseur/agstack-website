@@ -12,10 +12,8 @@ children:
       permalink: /user_registry
     - title: Asset registry
       permalink: /asset_registry
-    - title: divider
     - title: Agriculture recommendations
       permalink: /ag_rec
-    - title: divider
     - title: MessageCast
       permalink: /message_cast
 ---
