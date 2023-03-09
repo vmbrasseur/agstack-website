@@ -5,7 +5,7 @@
     "description" : "Production Server (live data)"
   }],
   "info" : {
-    "title" : "user-registry",
+    "title" : "User registry API",
     "version" : "1.0.0",
     "contact" : {
       "email" : "admin@agstack.org"

@@ -28,7 +28,7 @@ A table list of user data where the following parameter values are stored:
 
 Complete the following steps to create a user account:
 
-1. Navigate to the AgStack login page: user-registry.agstack.org.
+1. Navigate to the AgStack login page: [user-registry.agstack.org](https://user-registry.agstack.org/).
 2. If you are creating a new account, select the **Sign up** link. A form is displayed.
 3. Complete the required fields of the form, then click **Sign up**. After you complete the form, the login box is displayed again. 
 4. Check the email that you entered for an activation email, and click the activation link. You must verify your account by selecting the activation link.
