@@ -22,7 +22,7 @@ Asset registry (`asset-registry`) is a web application for AgStack users to regi
 
 When you register a new asset, you receive a unique geoID. You can register an asset by using the asset registry map. Complete the following steps to register a field:
 
-1. Log in to AgStack, then select the **Asset registry** button.
+1. Log in to the AgStack user registry, then select the **Asset registry** button. You are directed to the map user interface: [asset-registry.agstack.org](asset-registry.agstack.org)
 2. Select the _Draw polygon_ or _Draw rectangle_ icon.
   * When you select to draw a polygon, select specific points to create a boundary around the area. Select the initial point to close the polygon.
   * When you select to draw a rectangle, click and drag your cursor to create the rectangular boundary.
