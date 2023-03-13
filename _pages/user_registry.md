@@ -36,7 +36,8 @@ Complete the following steps to create a user account:
 **Notes:** 
 
 - If you have not received an activation email, select **Resend Activation Email**. 
-- If the domain is block, you receive status code 401 with the following message: `You are not allowed to register.`
+- If you do not have a registered account, the following message is displayed: `You are not registered.`
+- If the domain is blocked, you receive a status code 401 with the following message: `You are not allowed to register.`
 - If you enter an existing email, you a receive status code 202 with the following message: `User already exists. Please log in`
 
 5. Verify that your account is created. Log in by entering the email and password that you registered. If the user account does not exist, you receive the following message: `User does not exist`. If the user account does exist, the password is verified. If the passwords do not match, you receive the following message: `Wrong password`.
