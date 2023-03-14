@@ -14,12 +14,6 @@ Asset registry (`asset-registry`) is a web application for AgStack users to regi
 <!--If this prereq is required, what command should the user run to verify the installation?-->
 * Verify that the S2 Geometry library is installed on your local environment. See [S2 Geometry Quick Start](https://s2geometry.io/devguide/cpp/quickstart).
 
-## Search for an exisiting asset
-
-You can search for specific assets by entering the geospatial information for your polygon. After you query your polygon, you receive a 256-byte/16-Char alphanumeric unique ID. You can view only the assets that are available from your user account. 
-   
-To find out the percentage overlap of two Geo IDs, enter the specific Geo IDs that you want to check.
-
 ## Register a field 
 
 When you register a field, you receive a unique geoID. You can register a field by using the asset registry map. Complete the following steps to register a field:
@@ -33,42 +27,61 @@ When you register a field, you receive a unique geoID. You can register a field 
 5. To fetch an existing field, enter the the geo information that you have. Click the _Fetch Field_ button.
 6. Select the _Register Field_ button to register the polygon.
 
+Your field is registered.
+
 ## Fetch a field
 
+Complete the following steps to fetch a field:
+
+1. After you log in, navigate to the asset registry by selecting the **Asset registry** button.
+2. Select the **Action** icon from the map.
+3. Enter a valid Geo ID for the _Search by Geo ID_ parameter.
+
+The bounded field is displayed on the map.
 
 ### Fetch overlapping fields
 
-1. Select the _Draw polygon_ icon.
+1. Select the **Draw polygon** icon.
 2. Enter the values for the following parameter fields: _Resolution level_, _Threshold_, _S2 index_, and _Domain_.
+3. Select the **Fetch field** button.
 
-
+Relevant bounded fields are displayed from the map
 
 ### Fetch bounding box fields
 
-1.  Select the _Draw rectangle_ icon.
+1.  Select the **Draw rectangle** icon.
 2.  Draw a rectangle across the area that you want.
 3.  Click the **Fetch field** button.
-4.  Relevant bounded fields are displayed on the map.
+
+Relevant bounded fields are displayed from the map.
 
 ### Fetch fields for a point
 
-1. Select the marker icon on the map.
+You can fetch a field based on the latitude and longitude point that you provide. Complete the following steps:
+
+1. Select the **Marker** icon on the map.
 2. Enter the values for the _Domain_ and _S2 index_ parameter fileds.
 3. Select the **Fetch field** button.
-4. The bounded field appears on the map.
 
+The bounded field appears on the map.
 
-## Get percentage overlap of two fields
+## Get overlap percentage of two fields
 
+Complete the following steps to discover the overlap percentage of two Geo IDs:
 
+1. Select the **Actions** icon.
+2. Provide the two Geo IDs.
+3. Click the **% Percentage** button.
 
-
-
+A percentage value is provided.
 
 ## Asset registry API
 
-You can enter values to test the Asset registry API. From the AgStack website, click the **_APIs_** drop-down menu. Select _Asset registry_ to view the documentation. 
+You can enter values to test the Asset registry API from the AgStack website. Complete the following steps:
 
-**Note:** Be sure to open the API in a new tab.
+1. From the AgStack website header, click the **_APIs_** tab > **Asset registry**. 
 
-To test the API, click the drop-down arrow for the function that you want to test. Click the **Try it out** button to enter queries.
+   **Note:** Be sure to open the API in a new tab.
+
+2. To test the API, click the drop-down arrow for the function that you want to test. 
+3. Click the **Try it out** button to enter queries.
