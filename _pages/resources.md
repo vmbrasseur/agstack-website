@@ -32,4 +32,4 @@ View the list of open resources and documents for AgStack projects. Visit these 
 
 ## Videos
 
-- [![Linux Foundation Launches AgStack YouTube video](/assets/img/youtube_image.png)](https://www.youtube.com/watch?v=C_TO86dGjXg "Linux Foundation Launches AgStack")
+- [![Linux Foundation Launches AgStack YouTube video](../assets/img/youtube_image.png)](https://www.youtube.com/watch?v=C_TO86dGjXg "Linux Foundation Launches AgStack")
