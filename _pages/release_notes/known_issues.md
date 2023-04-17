@@ -3,7 +3,7 @@ layout: page
 title: Known issues and limitations
 permalink: /known_issues.md
 horizontal: false
-nav: true
+nav: false
 ---
 
 ## Documentation known issues
