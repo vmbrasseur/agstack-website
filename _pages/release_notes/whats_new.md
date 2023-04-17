@@ -1,7 +1,7 @@
 ---
 layout: page
 title: What's new
-permalink: /whats-new
+permalink: /whats_new
 horizontal: false
 nav: false
 ---
