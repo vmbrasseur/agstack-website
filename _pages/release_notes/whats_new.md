@@ -13,7 +13,7 @@ This document describes new features and enhancements for v1.0.0
 * You can now log in from the asset registry map by selecting the _Log in_ button. 
 * View the _User Registry Dashboard_ for user metrics.
 
-For more information, read the [User registry](../_pages/user_registry.md) documentation.
+For more information, read the [User registry](../../_pages/user_registry.md) documentation.
 
 ## Asset registry
 
@@ -24,4 +24,4 @@ For more information, read the [User registry](../_pages/user_registry.md) docum
 * You can search for a overlapping fields by entering values for the optional parameters: _Resolution level_, _Threshold_, _Domain_, and _S2 index_. 
 * View the _Asset Registry Dashboard_ for field metrics.
 
-For more information, read the [Asset registry](../_pages/asset_registry.md) documentation.
+For more information, read the [Asset registry](../../_pages/asset_registry.md) documentation.
