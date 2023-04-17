@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Known issues and limitations
-permalink: /known_issues.md
+permalink: /known_issues
 horizontal: false
 nav: false
 ---
