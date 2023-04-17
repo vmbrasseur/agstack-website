@@ -1,9 +1,9 @@
 ---
 layout: page
 title: What's new
-permalink: /whats-new
+permalink: /whats_new
 horizontal: false
-nav: true
+nav: false
 ---
 
 This document describes new features and enhancements for v1.0.0
