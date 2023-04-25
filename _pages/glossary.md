@@ -14,7 +14,7 @@ dropdown: false
 
 ## D
 
-* **domain:**  The second part of the email address for a user, defined entirely by the characters after the `@`.  Common domains such as `gmail.com`, `yahoo.com`, etc.) are considered invalid.
+* **domain:** The second part of the email address for a user, defined entirely by the characters after the `@`.  Common domains such as `gmail.com`, `yahoo.com`, etc.) are considered invalid.
 
 
 ## G
@@ -29,5 +29,5 @@ dropdown: false
 
 ## S
 
-* S2 index: A string _token_ that defines the geographical address of a unique S2 cell at any of the 31 levels of resolution. For more information about this open source standard, see [S2 Cell Hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy). 
+* **S2 index:** A string _token_ that defines the geographical address of a unique S2 cell at any of the 31 levels of resolution. For more information about this open source standard, see [S2 Cell Hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy). 
 
