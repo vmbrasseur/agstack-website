@@ -12,7 +12,7 @@ children:
       permalink: /user_registry
     - title: Asset registry
       permalink: /asset_registry
-    - title: Agriculture recommendations
+    - title: Agricultural recommendations
       permalink: /ag_rec
 ---
 
