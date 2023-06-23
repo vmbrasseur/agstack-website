@@ -6,9 +6,11 @@ horizontal: false
 nav: false
 ---
 
+Continue reading to view the current known issues of the AgStack project. There is also a link to the Jira issue if you are interested in helping to resolve the issue.
+
 ## Documentation known issues
 
-#### API real URLs inaccurate 
+#### Real URLs for API documentation are inaccurate 
 
 When you select **Asset registry** from the _APIs_ drop-down tab, the User registry API is displayed with the following URL:
 
