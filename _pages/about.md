@@ -4,6 +4,7 @@ title: About AgStack
 description: 
 permalink: /about
 horizontal: false
+nav: true
 ---
 
 ## What We Do

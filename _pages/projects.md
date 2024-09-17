@@ -4,6 +4,7 @@ title: Projects
 description: 
 permalink: /projects
 horizontal: false
+nav: true
 ---
 
 * ag-rec

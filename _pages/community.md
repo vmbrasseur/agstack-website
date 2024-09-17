@@ -4,6 +4,7 @@ title: Community
 description: 
 permalink: /community
 horizontal: false
+nav: true
 ---
 
 * CoC
