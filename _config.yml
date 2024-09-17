@@ -2,8 +2,8 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: AgStack # the website title (if blank, full name will be used instead)
-first_name: Linux
+title: The AgStack Foundation # the website title (if blank, full name will be used instead)
+first_name:
 middle_name:
 last_name:
 email:
@@ -12,7 +12,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: AgStack, agriculture, digital transfotmation # add your own keywords or leave empty
+keywords: AgStack, agriculture, digital transformation # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: agstack-logo.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -128,6 +128,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - archive
 keep_files:
   - CNAME
   - .nojekyll
