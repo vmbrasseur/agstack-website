@@ -1,17 +1,25 @@
 ---
-layout: about
-title: About AgStack
+layout: page
+title: About
 description: 
 permalink: /about
 horizontal: false
 nav: true
 ---
 
-## What We Do
+## Our Purpose
 
-The AgStack Foundation seeks to improve global agriculture efficiency through the creation, maintenance and enhancement of free, reusable, open and specialized digital infrastructure for data and applications. Our main goal is to globally enable a suite of software, data tools, and frameworks, and provide access to the agriculture ecosystem for content creators and content consumers. Another goal to highlight is bringing the largest technology companies to agriculture,  leveraging existing open source technology, and promoting community collaboration across companies, developers, and other agriculture users or stakeholders.
+The AgStack Foundation supports global agriculture through the creation, maintenance and enhancement of free, reusable, open, and specialized digital infrastructure for agriculture data and applications.
 
-## Who We Are
+## Our Goals
 
-* list staff
-* point to governance page
+1. Create and support a suite of open source software, data tools, and frameworks for agriculture.
+1. Promote community collaboration across companies, researchers, NPOs, growers, agronomists, developers, and all other agriculture stakeholders.
+1. Provide content creators and consumers access to the agriculture ecosystem.
+
+## Our People
+
+* [Brian King](https://www.linkedin.com/in/brian-king-1b86434/), Executive Director
+<!-- Sumer said via Slack DM that Aleem & Brian may be co-EDs -->
+
+For more information about our community leaders and members, please visit the [Community](/community) and [Governance](/governance) pages.

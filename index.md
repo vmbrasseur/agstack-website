@@ -6,4 +6,4 @@ description: Open Source Digital Infrastructure for Agriculture
 permalink: /
 ---
 
-The AgStack Foundation seeks to improve global agriculture efficiency through the creation, maintenance and enhancement of free, re-usable, open and specialized digital infrastructure for data and applications.
+The AgStack Foundation is the home of open collaboration for digital agricultural infrastructure, applications, data, and specifications.

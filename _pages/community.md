@@ -7,8 +7,15 @@ horizontal: false
 nav: true
 ---
 
+## Welcome to the AgStack Community
+
 * CoC
-* Getting Started
+
+## Community Spaces
+
 * Discord
 * Mailing List
+
+## Contribute to AgStack
+
 * Documentation

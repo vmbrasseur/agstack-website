@@ -90,15 +90,18 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 collections:
   news:
     defaults:
-      layout: post
+      layout: archive
     output: true
-    permalink: /news/:path/
+    permalink: /news/:year:/:month:/:title:output_ext
   projects:
     output: true
-    permalink: /projects/:path/
+    defaults:
+      layout: page
+    output: true
+    permalink: /:path/
 
 news_scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-news_limit: 5 # leave blank to include all the news in the `_news` folder
+news_limit: 10 # leave blank to include all the news in the `_news` folder
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -118,7 +121,9 @@ kramdown:
       start_line: 1
 
 # Includes & excludes
-include: ['_pages']
+include:
+  - _pages
+  - _news
 exclude:
   - bin
   - Gemfile
@@ -153,7 +158,11 @@ defaults:
       path: "assets/**/*.*"
     values:
       sitemap: false
-
+  - scope:
+      path: "news"
+      type: "posts"
+    values:
+      layout: "post"
 # -----------------------------------------------------------------------------
 # Jekyll Minifier
 # -----------------------------------------------------------------------------
@@ -168,7 +177,7 @@ jekyll-minifier:
 # -----------------------------------------------------------------------------
 
 imagemagick:
-  enabled: false # enables responsive images for your site (recomended, see https://github.com/alshedivat/al-folio/issues/537)
+  enabled: true # enables responsive images for your site (recomended, see https://github.com/alshedivat/al-folio/issues/537)
   widths:
     - 480
     - 800
