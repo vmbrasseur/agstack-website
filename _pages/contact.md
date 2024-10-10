@@ -7,4 +7,4 @@ horizontal: false
 nav: true
 ---
 
-* Contact form
+{%include contactform.html %}

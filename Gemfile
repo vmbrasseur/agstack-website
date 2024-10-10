@@ -18,6 +18,11 @@ group :jekyll_plugins do
     gem 'unicode_utils'
     gem 'webrick'
 end
+group :themes do
+    gem 'jekyll-agency'
+    gem 'jekyll-theme-so-simple'
+    gem "jekyll-text-theme"
+end
 group :other_plugins do
     gem 'httparty'
     gem 'feedjira'

@@ -18,4 +18,4 @@ nav: true
 
 ## Contribute to AgStack
 
-* Documentation
+* [Contribution guidance](/contribute)
