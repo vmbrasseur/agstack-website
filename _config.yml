@@ -66,6 +66,8 @@ search_full_content: false # can have performance implications for large sites
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+exclude:
+  - archive
 include:
   - _pages
   - _projects
