@@ -1,10 +1,7 @@
 ---
-layout: page
 title: Governance
 description: 
 permalink: /governance
-horizontal: false
-nav: true
 ---
 
 * technical committee

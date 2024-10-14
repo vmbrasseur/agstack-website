@@ -1,10 +1,7 @@
 ---
-layout: page
 title: Projects
 description: 
 permalink: /agstack-projects
-horizontal: false
-nav: true
 ---
 <!-- link to correct files under _projects -->
 <!-- eventually auto-build this list using files under _projects -->

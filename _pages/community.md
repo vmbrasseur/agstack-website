@@ -1,10 +1,7 @@
 ---
-layout: page
 title: Community
 description: 
 permalink: /community
-horizontal: false
-nav: true
 ---
 
 ## Welcome to the AgStack Community
