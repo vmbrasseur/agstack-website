@@ -71,6 +71,7 @@ exclude:
 include:
   - _pages
   - _projects
+  - _posts
 
 plugins:
   - jekyll-seo-tag
@@ -80,12 +81,13 @@ plugins:
 
 # Front Matter Defaults
 defaults:
-  # Posts defaults
   - scope:
-      path: "_posts"
-      type: posts
+      path: "_news"
+      type: news
     values:
-      layout: post
+      layout: single
+      classes: wide
+      author_profile: false
       share: false
   - scope:
       path: "_pages"
@@ -95,10 +97,16 @@ defaults:
       classes: wide
   - scope:
       path: "_projects"
-      type: pages
+      type: projects
     values:
       layout: single
       classes: wide
+
+# For news and blog posts
+collections:
+  news:
+    output: true
+    permalink: /:collection/:year/:month/:title:output_ext
 
 # Site Author
 author:
