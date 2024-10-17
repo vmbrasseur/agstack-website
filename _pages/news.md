@@ -1,9 +1,7 @@
 ---
 title: News
-layout: collection
 permalink: /news
-collection: news
-classes: wide
+layout: home
 ---
 
 Testing stuff here
